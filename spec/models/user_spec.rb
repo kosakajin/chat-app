@@ -18,14 +18,15 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Name can't be blank")
       end
       it "emailが空では登録できない" do
-        @user.email = ''
+        @user.email =nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name can't be blank")
+        #binding.pry
+        expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it "passwordが空では登録できない" do
-        @user.email = ''
+        @user.password =''
         @user.valid?
-        expect(@user.errors.full_messages).to include("Name can't be blank")
+        expect(@user.errors.full_messages).to include("Password can't be blank")
       end
       it 'passwordが5文字以下では登録できない' do
         @user.password = '12345'
